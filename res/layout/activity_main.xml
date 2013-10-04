@@ -1,36 +1,18 @@
-<com.vvendemia.gridviewchallenge.ObservableScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/scroll_view"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <FrameLayout
+    android:layout_height="match_parent"
+    tools:context=".MainActivity" >
+    
+    <GridView
+        android:id="@+id/myGrid"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/cold_blue"
+   		android:horizontalSpacing="1dp"
+    	android:numColumns="2"
+    	android:verticalSpacing="1dp" />
 
-       <LinearLayout
-            android:id="@+id/mainContent"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+    
 
-
-
-            <View android:id="@+id/placeholder"
-                android:layout_width="match_parent"
-                android:layout_height="100dp" />
-<!--  
-            <View style="@style/Item.Bottom" />
-            <View style="@style/Item.Bottom.Alt" />
-            <View style="@style/Item.Bottom" />
-            <View style="@style/Item.Bottom.Alt" />
-            <View style="@style/Item.Bottom" />
-            <View style="@style/Item.Bottom.Alt" />
--->
-        </LinearLayout>
-
-        <TextView android:id="@+id/sticky" style="@style/Item.Sticky" />
-
-    </FrameLayout>
-
-</com.vvendemia.gridviewchallenge.ObservableScrollView>
+</LinearLayout>

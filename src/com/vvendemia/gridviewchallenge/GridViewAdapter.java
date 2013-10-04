@@ -2,6 +2,8 @@ package com.vvendemia.gridviewchallenge;
 
 import java.util.List;
 
+import com.squareup.picasso.Picasso;
+
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
@@ -9,13 +11,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 public class GridViewAdapter extends ArrayAdapter<String> {
 
 	
-	private final int ANSWER_CORRECT_FLAG = 1;
-	private final int ANSWER_INCORRECT_FLAG = -1;
-	
+
+	static boolean hasHeader = false;
 	private Context context;
 	private LayoutInflater mInflater;
 	private List<String> imagesList;
@@ -41,6 +43,7 @@ public class GridViewAdapter extends ArrayAdapter<String> {
 
 	private class GridItemHolder {
 		ImageView mImage;
+		TextView header;
 	}
 
 
@@ -54,6 +57,7 @@ public class GridViewAdapter extends ArrayAdapter<String> {
 		if(convertView == null) {
 			mViewHolder = new GridItemHolder();
 			convertView = View.inflate(context, R.layout.grid_view_item, null);
+			mViewHolder.header = (TextView) convertView.findViewById(R.id.header);
 			mViewHolder.mImage = (ImageView) convertView.findViewById(R.id.gridItemOne);		
 			convertView.setTag(mViewHolder);
 		}
@@ -61,8 +65,13 @@ public class GridViewAdapter extends ArrayAdapter<String> {
 			mViewHolder = (GridItemHolder) convertView.getTag();
 		}
 		
-		Drawable d = context.getResources().getDrawable(R.drawable.ic_launcher);
-		mViewHolder.mImage.setImageDrawable(d);
+		Picasso.with(context).load(imagesList.get(position)).resize(650, 400).into(mViewHolder.mImage);
+		
+		if(!hasHeader) {
+			mViewHolder.header.setText("Custom Grid View");
+			mViewHolder.header.setVisibility(View.VISIBLE);
+			hasHeader = true;
+		}
 		
 		return convertView;
 	}
