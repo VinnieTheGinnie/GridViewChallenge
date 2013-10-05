@@ -31,10 +31,6 @@ public class GridViewAdapter extends ArrayAdapter<String> {
 
 	}
 
-
-
-
-
 	@Override
 	public int getCount() {
 		return (imagesList.size() > 0) ? imagesList.size() : 0;
